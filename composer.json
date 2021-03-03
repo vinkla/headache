@@ -1,0 +1,27 @@
+{
+    "name": "wordplate/headache",
+    "type": "wordpress-plugin",
+    "description": "An easy-to-swallow painkiller plugin for WordPress",
+    "keywords": [
+        "wordplate",
+        "head",
+        "headache",
+        "wordpress",
+        "plugin"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vincent Klaiber",
+            "email": "hello@doubledip.se"
+        }
+    ],
+    "require": {
+        "php": "^7.3 || ^8.0"
+    },
+    "config": {
+        "preferred-install": "dist"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
