@@ -2,6 +2,8 @@
 
 > An easy-to-swallow painkiller plugin for WordPress.
 
+The plugin removes a lot of default WordPress stuff you just can't wait to get rid of. It removes meta tags such as feeds, version numbers and emojis.
+
 [![Monthly Downloads](https://badgen.net/packagist/dm/wordplate/headache)](https://packagist.org/packages/wordplate/headache/stats)
 [![Latest Version](https://badgen.net/packagist/v/wordplate/headache)](https://packagist.org/packages/wordplate/headache)
 
@@ -13,7 +15,11 @@ Require the package, with Composer, in the root directory of your project.
 composer require wordplate/headache
 ```
 
+Then login to the WordPress administrator dashboard and active the plugin.
+
 ## Features
+
+All features are activated by default when the plugin is activated.
 
 - Disables feeds
 - Disable XML RPC for security
