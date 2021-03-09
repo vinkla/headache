@@ -80,12 +80,14 @@ remove_action('wp_head', 'wp_oembed_add_host_js');
 // https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username/
 function headache_disable_rest_endpoints($endpoints)
 {
-    if (isset($endpoints['/wp/v2/users'])) {
-        unset($endpoints['/wp/v2/users']);
-    }
+    if (!is_user_logged_in()) {
+        if (isset($endpoints['/wp/v2/users'])) {
+            unset($endpoints['/wp/v2/users']);
+        }
 
-    if (isset($endpoints['/wp/v2/users/(?P<id>[\d]+)'])) {
-        unset($endpoints['/wp/v2/users/(?P<id>[\d]+)']);
+        if (isset($endpoints['/wp/v2/users/(?P<id>[\d]+)'])) {
+            unset($endpoints['/wp/v2/users/(?P<id>[\d]+)']);
+        }
     }
 
     return $endpoints;
