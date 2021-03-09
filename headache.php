@@ -12,7 +12,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: WordPlate
  * Author URI: https://github.com/wordplate/wordplate
- * Version: 1.0.0
+ * Version: 1.1.0
  * Plugin URI: https://github.com/wordplate/mail
  */
 
