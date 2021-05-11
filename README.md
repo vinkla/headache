@@ -21,23 +21,24 @@ Then login to the WordPress administrator dashboard and active the plugin.
 
 All features are activated by default when the plugin is activated.
 
-- Disables feeds
+- Disable default users API endpoints for security
 - Disable XML RPC for security
-- Removes WordPress version
-- Removes shortlink
 - Disables comments feeds
-- Removes RSS feed links
+- Disables feeds
+- Remove contributor, subscriber and author roles
+- Remove Gutenberg's front-end block styles
+- Removes ?ver= query from styles and scripts
 - Removes all extra RSS feed links
-- Removes Really Simple Discovery link
-- Removes wlwmanifest.xml
+- Removes emojis
+- Removes JPEG compression
 - Removes meta rel=dns-prefetch href=//s.w.org
+- Removes oEmbeds
+- Removes Really Simple Discovery link
 - Removes relational links for the posts
 - Removes REST API link tag from header
-- Removes emojis
-- Removes oEmbeds
-- Disable default users API endpoints for security
-- Removes JPEG compression
+- Removes RSS feed links
+- Removes shortlink
+- Removes wlwmanifest.xml
+- Removes WordPress version
 - Update login page image link URL
 - Update login page link title
-- Removes ?ver= query from styles and scripts
-- Remove contributor, subscriber and author roles

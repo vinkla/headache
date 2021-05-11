@@ -119,6 +119,15 @@ function headache_login_title(): string
 
 add_filter('login_headertext', 'headache_login_title');
 
+// Remove Gutenberg's front-end block styles.
+function headache_remove_block_styles()
+{
+    wp_deregister_style('wp-block-library');
+}
+
+add_action('wp_enqueue_scripts', 'headache_remove_block_styles');
+
+
 // Removes ?ver= query from styles and scripts.
 function headache_remove_script_version(string $src): string
 {
