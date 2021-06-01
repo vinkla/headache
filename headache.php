@@ -12,8 +12,8 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: WordPlate
  * Author URI: https://github.com/wordplate/wordplate
- * Version: 1.2.0
- * Plugin URI: https://github.com/wordplate/mail
+ * Version: 1.3.0
+ * Plugin URI: https://github.com/wordplate/headache
  */
 
 // Redirects all feeds to home page.
@@ -38,6 +38,9 @@ add_filter('xmlrpc_enabled', '__return_false');
 
 // Removes WordPress version.
 remove_action('wp_head', 'wp_generator');
+
+// Removes generated icons.
+remove_action('wp_head', 'wp_site_icon', 99);
 
 // Removes shortlink.
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);

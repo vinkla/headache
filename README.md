@@ -30,6 +30,7 @@ All features are activated by default when the plugin is activated.
 - Removes ?ver= query from styles and scripts
 - Removes all extra RSS feed links
 - Removes emojis
+- Removes generated icons
 - Removes JPEG compression
 - Removes meta rel=dns-prefetch href=//s.w.org
 - Removes oEmbeds
