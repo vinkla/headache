@@ -122,6 +122,14 @@ function headache_login_title(): string
 
 add_filter('login_headertext', 'headache_login_title');
 
+// Remove admin dashboard panels.
+function headache_remove_dashboard_panels(): void
+{
+    remove_meta_box('dashboard_primary', 'dashboard', 'side');
+}
+
+add_action('wp_dashboard_setup', 'headache_remove_dashboard_panels');
+
 // Remove Gutenberg's front-end block styles.
 function headache_remove_block_styles()
 {
