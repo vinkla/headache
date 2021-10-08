@@ -81,7 +81,7 @@ remove_action('wp_head', 'wp_oembed_add_host_js');
 
 // Disable default users API endpoints for security.
 // https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username/
-function headache_disable_rest_endpoints($endpoints)
+function headache_disable_rest_endpoints($endpoints): array
 {
     if (!is_user_logged_in()) {
         if (isset($endpoints['/wp/v2/users'])) {
@@ -123,13 +123,12 @@ function headache_login_title(): string
 add_filter('login_headertext', 'headache_login_title');
 
 // Remove Gutenberg's front-end block styles.
-function headache_remove_block_styles()
+function headache_remove_block_styles(): void
 {
     wp_deregister_style('wp-block-library');
 }
 
 add_action('wp_enqueue_scripts', 'headache_remove_block_styles');
-
 
 // Removes ?ver= query from styles and scripts.
 function headache_remove_script_version(string $src): string
