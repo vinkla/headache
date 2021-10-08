@@ -14,6 +14,7 @@
  * Author URI: https://github.com/wordplate/wordplate
  * Version: 1.3.0
  * Plugin URI: https://github.com/wordplate/headache
+ * GitHub Plugin URI: wordplate/headache
  */
 
 // Redirects all feeds to home page.
