@@ -25,6 +25,7 @@ All features are activated by default when the plugin is activated.
 - Disable XML RPC for security
 - Disables comments feeds
 - Disables feeds
+- Removes *WordPress Events & News panel* from Dashboard
 - Remove contributor, subscriber and author roles
 - Remove Gutenberg's front-end block styles
 - Removes ?ver= query from styles and scripts
