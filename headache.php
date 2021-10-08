@@ -130,7 +130,6 @@ function headache_remove_block_styles(): void
 
 add_action('wp_enqueue_scripts', 'headache_remove_block_styles');
 
-
 // Removes ?ver= query from styles and scripts.
 function headache_remove_script_version(string $src): string
 {
