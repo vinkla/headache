@@ -131,7 +131,7 @@ function headache_remove_block_styles(): void
 
 add_action('wp_enqueue_scripts', 'headache_remove_block_styles');
 
-// Remove Gutenberg's front-end global styles.
+// Remove Gutenberg's global styles.
 // https://github.com/WordPress/gutenberg/pull/34334#issuecomment-911531705
 function headache_remove_global_styles()
 {
@@ -139,7 +139,6 @@ function headache_remove_global_styles()
 }
 
 add_action('wp_enqueue_scripts', 'headache_remove_global_styles');
-
 
 // Removes ?ver= query from styles and scripts.
 function headache_remove_script_version(string $src): string
