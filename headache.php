@@ -12,7 +12,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: WordPlate
  * Author URI: https://github.com/wordplate/wordplate
- * Version: 1.3.0
+ * Version: 1.4.0
  * Plugin URI: https://github.com/wordplate/headache
  * GitHub Plugin URI: wordplate/headache
  */
