@@ -33,6 +33,7 @@ All features are activated by default when the plugin is activated.
 - Removes emojis
 - Removes generated icons
 - Removes JPEG compression
+- Removes language dropdown on login screen
 - Removes meta rel=dns-prefetch href=//s.w.org
 - Removes oEmbeds
 - Removes Really Simple Discovery link
