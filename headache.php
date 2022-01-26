@@ -12,7 +12,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: WordPlate
  * Author URI: https://github.com/wordplate/wordplate
- * Version: 1.5.0
+ * Version: 1.6.0
  * Plugin URI: https://github.com/wordplate/headache
  * GitHub Plugin URI: wordplate/headache
  */
@@ -79,6 +79,9 @@ remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 // Removes oEmbeds.
 remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
 remove_action('wp_head', 'wp_oembed_add_host_js');
+
+// Remove language dropdown on login screen.
+add_filter('login_display_language_dropdown', '__return_false');
 
 // Disable default users API endpoints for security.
 // https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username/
