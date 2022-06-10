@@ -34,6 +34,12 @@ add_action('do_feed_atom', 'headache_disable_feeds', 1);
 add_action('do_feed_rss2_comments', 'headache_disable_feeds', 1);
 add_action('do_feed_atom_comments', 'hHeadache_disable_feeds', 1);
 
+// Disable comments.
+add_filter('comments_open', '__return_false');
+
+// Remove language dropdown on login screen.
+add_filter('login_display_language_dropdown', '__return_false');
+
 // Disable XML RPC for security.
 add_filter('xmlrpc_enabled', '__return_false');
 
@@ -79,12 +85,6 @@ remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 // Removes oEmbeds.
 remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
 remove_action('wp_head', 'wp_oembed_add_host_js');
-
-// Remove language dropdown on login screen.
-add_filter('login_display_language_dropdown', '__return_false');
-
-// Disable comments.
-add_filter('comments_open', '__return_false');
 
 // Disable default users API endpoints for security.
 // https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username/
