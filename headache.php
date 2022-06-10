@@ -12,7 +12,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: WordPlate
  * Author URI: https://github.com/wordplate/wordplate
- * Version: 1.7.0
+ * Version: 2.0.0
  * Plugin URI: https://github.com/wordplate/headache
  * GitHub Plugin URI: wordplate/headache
  */
@@ -164,3 +164,28 @@ function headache_remove_roles(): void
 }
 
 add_action('init', 'headache_remove_roles');
+
+// Disabled attachment media pages.
+function headache_disable_media_pages()
+{
+    if (is_attachment()) {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header(404);
+    }
+}
+
+add_filter('template_redirect', 'headache_disable_media_pages');
+add_filter('redirect_canonical', 'headache_disable_media_pages', 0);
+
+// Disabled attachment media page links.
+function headache_attachment_link($url, $id)
+{
+    if ($attachment_url = wp_get_attachment_url($id)) {
+        return $attachment_url;
+    }
+
+    return $url;
+}
+
+add_filter('attachment_link', 'headache_attachment_link', 10, 2);
