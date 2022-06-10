@@ -23,6 +23,7 @@ All features are activated by default when the plugin is activated.
 
 - Disable default users API endpoints for security
 - Disable XML RPC for security
+- Disables comments
 - Disables comments feeds
 - Disables feeds
 - Remove contributor, subscriber and author roles
