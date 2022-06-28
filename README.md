@@ -27,9 +27,10 @@ All features are activated by default when the plugin is activated.
 - Disables comments feeds
 - Disables feeds
 - Disabled attachment media pages
-- Remove contributor, subscriber and author roles
-- Remove Gutenberg's front-end block styles
-- Remove Gutenberg's global styles
+- Removes contributor, subscriber and author roles
+- Removes Gutenberg's front-end block styles
+- Removes Gutenberg's global styles
+- Removes Gutenberg's SVG filters
 - Removes ?ver= query from styles and scripts
 - Removes all extra RSS feed links
 - Removes emojis

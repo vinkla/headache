@@ -147,6 +147,14 @@ function headache_remove_global_styles()
 
 add_action('wp_enqueue_scripts', 'headache_remove_global_styles');
 
+// Removes the SVG Filters that are mostly if not only used in Full Site Editing/Gutenberg
+// Detailed discussion at: https://github.com/WordPress/gutenberg/issues/36834
+function headache_remove_svg_filters() {
+	remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
+}
+
+add_action('init', 'headache_remove_svg_filters');
+
 // Removes ?ver= query from styles and scripts.
 function headache_remove_script_version(string $src): string
 {
