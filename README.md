@@ -41,9 +41,9 @@ All features are activated by default when the plugin is activated.
 - Removes oEmbeds
 - Removes Really Simple Discovery link
 - Removes relational links for the posts
-- Removes REST API link tag from header
+- Removes REST API link tag from `<head>` and HTML headers
 - Removes RSS feed links
-- Removes shortlink
+- Removes shortlink tag from `<head>` and HTML headers
 - Removes wlwmanifest.xml
 - Removes WordPress version
 - Update login page image link URL
