@@ -10,11 +10,11 @@
 /*
  * Plugin Name: Headache
  * Description: An easy-to-swallow painkiller plugin for WordPress.
- * Author: WordPlate
- * Author URI: https://github.com/wordplate/wordplate
- * Version: 2.1.0
- * Plugin URI: https://github.com/wordplate/headache
- * GitHub Plugin URI: wordplate/headache
+ * Author: Vincent Klaiber
+ * Author URI: https://github.com/vinkla
+ * Version: 2.2.0
+ * Plugin URI: https://github.com/vinkla/headache
+ * GitHub Plugin URI: vinkla/headache
  */
 
 // Redirects all feeds to home page.

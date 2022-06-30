@@ -1,7 +1,8 @@
 {
-    "name": "wordplate/headache",
-    "type": "wordpress-plugin",
+    "name": "vinkla/headache",
     "description": "An easy-to-swallow painkiller plugin for WordPress",
+    "license": "MIT",
+    "type": "wordpress-plugin",
     "keywords": [
         "wordplate",
         "head",
@@ -9,7 +10,6 @@
         "wordpress",
         "plugin"
     ],
-    "license": "MIT",
     "authors": [
         {
             "name": "Vincent Klaiber",
@@ -19,9 +19,9 @@
     "require": {
         "php": "^8.0"
     },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "config": {
         "preferred-install": "dist"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true
+    }
 }
