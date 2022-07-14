@@ -97,8 +97,6 @@ remove_action('wp_head', 'wp_oembed_add_host_js');
  * Disable default users API endpoints for security.
  *
  * @link https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username/
- * @param array<string, array<callable, string>|list<array<callable, string>>> $endpoints
- * @return array<string, array<callable, string>|list<array<callable, string>>>
  */
 function headache_disable_rest_endpoints(array $endpoints): array
 {
