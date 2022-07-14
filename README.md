@@ -1,11 +1,11 @@
 # Headache
 
-> An easy-to-swallow painkiller plugin for WordPress.
-
-The plugin removes a lot of default WordPress stuff you just can't wait to get rid of. It removes meta tags such as feeds, version numbers and emojis.
-
 [![Monthly Downloads](https://badgen.net/packagist/dm/vinkla/headache)](https://packagist.org/packages/vinkla/headache/stats)
 [![Latest Version](https://badgen.net/packagist/v/vinkla/headache)](https://packagist.org/packages/vinkla/headache)
+
+An easy-to-swallow painkiller plugin for WordPress.
+
+The plugin removes a lot of default WordPress stuff you just can't wait to get rid of. It removes meta tags such as feeds, version numbers and emojis.
 
 ## Installation
 
