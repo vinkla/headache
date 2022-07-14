@@ -51,10 +51,10 @@ remove_action('wp_head', 'wp_generator');
 remove_action('wp_head', 'wp_site_icon', 99);
 
 // Removes shortlink tag from <head>.
-remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
+remove_action('wp_head', 'wp_shortlink_wp_head', 10);
 
 // Removes shortlink tag from HTML headers.
-remove_action('template_redirect', 'wp_shortlink_header', 11, 0);
+remove_action('template_redirect', 'wp_shortlink_header', 11);
 
 // Removes Really Simple Discovery link.
 remove_action('wp_head', 'rsd_link');
@@ -72,13 +72,13 @@ remove_action('wp_head', 'wlwmanifest_link');
 remove_action('wp_head', 'wp_resource_hints', 2);
 
 // Removes relational links for the posts.
-remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
+remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
 
 // Removes REST API link tag from <head>.
-remove_action('wp_head', 'rest_output_link_wp_head', 10, 0);
+remove_action('wp_head', 'rest_output_link_wp_head', 10);
 
 // Removes REST API link tag from HTML headers.
-remove_action('template_redirect', 'rest_output_link_header', 11, 0);
+remove_action('template_redirect', 'rest_output_link_header', 11);
 
 // Removes emojis.
 remove_action('wp_head', 'print_emoji_detection_script', 7);
@@ -93,9 +93,12 @@ remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
 remove_action('wp_head', 'wp_oembed_add_host_js');
 
-// Disable default users API endpoints for security.
-// https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username/
-function headache_disable_rest_endpoints($endpoints): array
+/**
+ * Disable default users API endpoints for security.
+ *
+ * @link https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username/
+ */
+function headache_disable_rest_endpoints(array $endpoints): array
 {
     if (!is_user_logged_in()) {
         if (isset($endpoints['/wp/v2/users'])) {
@@ -146,7 +149,7 @@ add_action('wp_enqueue_scripts', 'headache_remove_block_styles');
 
 // Remove Gutenberg's global styles.
 // https://github.com/WordPress/gutenberg/pull/34334#issuecomment-911531705
-function headache_remove_global_styles()
+function headache_remove_global_styles(): void
 {
     wp_dequeue_style('global-styles');
 }
@@ -155,7 +158,7 @@ add_action('wp_enqueue_scripts', 'headache_remove_global_styles');
 
 // Removes the SVG Filters that are mostly if not only used in Full Site Editing/Gutenberg
 // Detailed discussion at: https://github.com/WordPress/gutenberg/issues/36834
-function headache_remove_svg_filters()
+function headache_remove_svg_filters(): void
 {
     remove_action('wp_body_open', 'gutenberg_global_styles_render_svg_filters');
     remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
@@ -183,7 +186,7 @@ function headache_remove_roles(): void
 add_action('init', 'headache_remove_roles');
 
 // Disabled attachment media pages.
-function headache_disable_media_pages()
+function headache_disable_media_pages(): void
 {
     if (is_attachment()) {
         global $wp_query;
@@ -196,7 +199,7 @@ add_filter('template_redirect', 'headache_disable_media_pages');
 add_filter('redirect_canonical', 'headache_disable_media_pages', 0);
 
 // Disabled attachment media page links.
-function headache_attachment_link($url, $id)
+function headache_attachment_link(string $url, int $id): string
 {
     if ($attachment_url = wp_get_attachment_url($id)) {
         return $attachment_url;
