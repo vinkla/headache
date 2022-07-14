@@ -32,7 +32,7 @@ add_action('do_feed_atom', 'headache_disable_feeds', 1);
 
 // Disables comments feeds.
 add_action('do_feed_rss2_comments', 'headache_disable_feeds', 1);
-add_action('do_feed_atom_comments', 'hHeadache_disable_feeds', 1);
+add_action('do_feed_atom_comments', 'headache_disable_feeds', 1);
 
 // Disable comments.
 add_filter('comments_open', '__return_false');
