@@ -93,11 +93,8 @@ remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
 remove_action('wp_head', 'wp_oembed_add_host_js');
 
-/**
- * Disable default users API endpoints for security.
- *
- * @link https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username/
- */
+// Disable default users API endpoints for security.
+// https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username/
 function headache_disable_rest_endpoints(array $endpoints): array
 {
     if (!is_user_logged_in()) {
