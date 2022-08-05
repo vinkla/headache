@@ -25,8 +25,8 @@ function headache_disable_feeds(): void
 
 // Disables feeds.
 add_action('do_feed', 'headache_disable_feeds', 1);
-add_action('do_feed_rdf',  'headache_disable_feeds', 1);
-add_action('do_feed_rss',  'headache_disable_feeds', 1);
+add_action('do_feed_rdf', 'headache_disable_feeds', 1);
+add_action('do_feed_rss', 'headache_disable_feeds', 1);
 add_action('do_feed_rss2', 'headache_disable_feeds', 1);
 add_action('do_feed_atom', 'headache_disable_feeds', 1);
 
