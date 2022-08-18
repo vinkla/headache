@@ -12,7 +12,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: Vincent Klaiber
  * Author URI: https://github.com/vinkla
- * Version: 2.2.1
+ * Version: 2.2.2
  * Plugin URI: https://github.com/vinkla/headache
  * GitHub Plugin URI: vinkla/headache
  */
@@ -182,8 +182,8 @@ function headache_remove_roles(): void
 
 add_action('init', 'headache_remove_roles');
 
-// Disabled attachment media pages.
-function headache_disable_media_pages(): void
+// Disabled attachment template loading and redirect to 404.
+function headache_attachment_redirect_not_found(): void
 {
     if (is_attachment()) {
         global $wp_query;
@@ -192,11 +192,20 @@ function headache_disable_media_pages(): void
     }
 }
 
-add_filter('template_redirect', 'headache_disable_media_pages');
-add_filter('redirect_canonical', 'headache_disable_media_pages', 0);
+add_filter('template_redirect', 'headache_attachment_redirect_not_found');
 
-// Disabled attachment media page links.
-function headache_attachment_link(string $url, int $id): string
+// Disabled attachment canonical redirect links.
+function headache_disable_attachment_canonical_redirect_url(string $url): string
+{
+    headache_attachment_redirect_not_found();
+
+    return $url;
+}
+
+add_filter('redirect_canonical', 'headache_disable_attachment_canonical_redirect_url', 0, 2);
+
+// Disabled attachment links.
+function headache_disable_attachment_link(string $url, int $id): string
 {
     if ($attachment_url = wp_get_attachment_url($id)) {
         return $attachment_url;
@@ -205,4 +214,4 @@ function headache_attachment_link(string $url, int $id): string
     return $url;
 }
 
-add_filter('attachment_link', 'headache_attachment_link', 10, 2);
+add_filter('attachment_link', 'headache_disable_attachment_link', 10, 2);
