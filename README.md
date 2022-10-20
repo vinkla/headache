@@ -24,28 +24,29 @@ All features are activated by default when the plugin is activated.
 
 - Disable default users API endpoints for security
 - Disable XML RPC for security
-- Disables comments
-- Disables comments feeds
-- Disables feeds
-- Disabled attachment media pages
-- Removes contributor, subscriber and author roles
-- Removes Gutenberg's front-end block styles
-- Removes Gutenberg's global styles
-- Removes Gutenberg's SVG filters
-- Removes ?ver= query from styles and scripts
-- Removes all extra RSS feed links
-- Removes emojis
-- Removes generated icons
-- Removes JPEG compression
-- Removes language dropdown on login screen
-- Removes meta rel=dns-prefetch href=//s.w.org
-- Removes oEmbeds
-- Removes Really Simple Discovery link
-- Removes relational links for the posts
-- Removes REST API link tag from `<head>` and HTML headers
-- Removes RSS feed links
-- Removes shortlink tag from `<head>` and HTML headers
-- Removes wlwmanifest.xml
-- Removes WordPress version
+- Disable comments
+- Disable comments feeds
+- Disable feeds
+- Disable attachment media pages
+- Discourage search engines from indexing in non-production environments
+- Remove contributor, subscriber and author roles
+- Remove Gutenberg's front-end block styles
+- Remove Gutenberg's global styles
+- Remove Gutenberg's SVG filters
+- Remove ?ver= query from styles and scripts
+- Remove all extra RSS feed links
+- Remove emojis
+- Remove generated icons
+- Remove JPEG compression
+- Remove language dropdown on login screen
+- Remove meta rel=dns-prefetch href=//s.w.org
+- Remove oEmbeds
+- Remove Really Simple Discovery link
+- Remove relational links for the posts
+- Remove REST API link tag from `<head>` and HTML headers
+- Remove RSS feed links
+- Remove shortlink tag from `<head>` and HTML headers
+- Remove wlwmanifest.xml
+- Remove WordPress version
 - Update login page image link URL
 - Update login page link title

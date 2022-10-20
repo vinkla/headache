@@ -12,7 +12,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: Vincent Klaiber
  * Author URI: https://github.com/vinkla
- * Version: 2.2.2
+ * Version: 2.3.0
  * Plugin URI: https://github.com/vinkla/headache
  * GitHub Plugin URI: vinkla/headache
  */
@@ -23,14 +23,14 @@ function headache_disable_feeds(): void
     wp_redirect(site_url());
 }
 
-// Disables feeds.
+// Disable feeds.
 add_action('do_feed', 'headache_disable_feeds', 1);
 add_action('do_feed_rdf', 'headache_disable_feeds', 1);
 add_action('do_feed_rss', 'headache_disable_feeds', 1);
 add_action('do_feed_rss2', 'headache_disable_feeds', 1);
 add_action('do_feed_atom', 'headache_disable_feeds', 1);
 
-// Disables comments feeds.
+// Disable comments feeds.
 add_action('do_feed_rss2_comments', 'headache_disable_feeds', 1);
 add_action('do_feed_atom_comments', 'headache_disable_feeds', 1);
 
@@ -44,43 +44,43 @@ add_filter('login_display_language_dropdown', '__return_false');
 add_filter('xmlrpc_enabled', '__return_false');
 add_filter('xmlrpc_methods', '__return_false');
 
-// Removes WordPress version.
+// Remove WordPress version.
 remove_action('wp_head', 'wp_generator');
 
-// Removes generated icons.
+// Remove generated icons.
 remove_action('wp_head', 'wp_site_icon', 99);
 
-// Removes shortlink tag from <head>.
+// Remove shortlink tag from <head>.
 remove_action('wp_head', 'wp_shortlink_wp_head', 10);
 
-// Removes shortlink tag from HTML headers.
+// Remove shortlink tag from HTML headers.
 remove_action('template_redirect', 'wp_shortlink_header', 11);
 
-// Removes Really Simple Discovery link.
+// Remove Really Simple Discovery link.
 remove_action('wp_head', 'rsd_link');
 
-// Removes RSS feed links.
+// Remove RSS feed links.
 remove_action('wp_head', 'feed_links', 2);
 
-// Removes all extra RSS feed links.
+// Remove all extra RSS feed links.
 remove_action('wp_head', 'feed_links_extra', 3);
 
-// Removes wlwmanifest.xml.
+// Remove wlwmanifest.xml.
 remove_action('wp_head', 'wlwmanifest_link');
 
-// Removes meta rel=dns-prefetch href=//s.w.org
+// Remove meta rel=dns-prefetch href=//s.w.org
 remove_action('wp_head', 'wp_resource_hints', 2);
 
-// Removes relational links for the posts.
+// Remove relational links for the posts.
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
 
-// Removes REST API link tag from <head>.
+// Remove REST API link tag from <head>.
 remove_action('wp_head', 'rest_output_link_wp_head', 10);
 
-// Removes REST API link tag from HTML headers.
+// Remove REST API link tag from HTML headers.
 remove_action('template_redirect', 'rest_output_link_header', 11);
 
-// Removes emojis.
+// Remove emojis.
 remove_action('wp_head', 'print_emoji_detection_script', 7);
 remove_action('admin_print_scripts', 'print_emoji_detection_script');
 remove_action('wp_print_styles', 'print_emoji_styles');
@@ -89,7 +89,7 @@ remove_filter('the_content_feed', 'wp_staticize_emoji');
 remove_filter('comment_text_rss', 'wp_staticize_emoji');
 remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
 
-// Removes oEmbeds.
+// Remove oEmbeds.
 remove_action('wp_head', 'wp_oembed_add_discovery_links', 10);
 remove_action('wp_head', 'wp_oembed_add_host_js');
 
@@ -112,7 +112,7 @@ function headache_disable_rest_endpoints(array $endpoints): array
 
 add_filter('rest_endpoints', 'headache_disable_rest_endpoints');
 
-// Removes JPEG compression.
+// Remove JPEG compression.
 function headache_remove_jpeg_compression(): int
 {
     return 100;
@@ -153,7 +153,7 @@ function headache_remove_global_styles(): void
 
 add_action('wp_enqueue_scripts', 'headache_remove_global_styles');
 
-// Removes the SVG Filters that are mostly if not only used in Full Site Editing/Gutenberg
+// Remove the SVG Filters that are mostly if not only used in Full Site Editing/Gutenberg
 // Detailed discussion at: https://github.com/WordPress/gutenberg/issues/36834
 function headache_remove_svg_filters(): void
 {
@@ -163,7 +163,7 @@ function headache_remove_svg_filters(): void
 
 add_action('init', 'headache_remove_svg_filters');
 
-// Removes ?ver= query from styles and scripts.
+// Remove ?ver= query from styles and scripts.
 function headache_remove_script_version(string $src): string
 {
     return $src ? esc_url(remove_query_arg('ver', $src)) : $src;
@@ -182,7 +182,7 @@ function headache_remove_roles(): void
 
 add_action('init', 'headache_remove_roles');
 
-// Disabled attachment template loading and redirect to 404.
+// Disable attachment template loading and redirect to 404.
 function headache_attachment_redirect_not_found(): void
 {
     if (is_attachment()) {
@@ -194,7 +194,7 @@ function headache_attachment_redirect_not_found(): void
 
 add_filter('template_redirect', 'headache_attachment_redirect_not_found');
 
-// Disabled attachment canonical redirect links.
+// Disable attachment canonical redirect links.
 function headache_disable_attachment_canonical_redirect_url(string $url): string
 {
     headache_attachment_redirect_not_found();
@@ -204,7 +204,7 @@ function headache_disable_attachment_canonical_redirect_url(string $url): string
 
 add_filter('redirect_canonical', 'headache_disable_attachment_canonical_redirect_url', 0, 2);
 
-// Disabled attachment links.
+// Disable attachment links.
 function headache_disable_attachment_link(string $url, int $id): string
 {
     if ($attachment_url = wp_get_attachment_url($id)) {
@@ -215,3 +215,11 @@ function headache_disable_attachment_link(string $url, int $id): string
 }
 
 add_filter('attachment_link', 'headache_disable_attachment_link', 10, 2);
+
+// Discourage search engines from indexing in non-production environments.
+function headache_disable_indexing()
+{
+    return wp_get_environment_type() === 'production' ? true : 0;
+}
+
+add_action('pre_option_blog_public', 'headache_disable_indexing');
