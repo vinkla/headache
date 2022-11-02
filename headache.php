@@ -12,7 +12,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: Vincent Klaiber
  * Author URI: https://github.com/vinkla
- * Version: 2.3.1
+ * Version: 2.4.0
  * Plugin URI: https://github.com/vinkla/headache
  * GitHub Plugin URI: vinkla/headache
  */
@@ -152,6 +152,15 @@ function headache_remove_global_styles(): void
 }
 
 add_action('wp_enqueue_scripts', 'headache_remove_global_styles');
+
+// Remove classic theme styles.
+// https://github.com/WordPress/WordPress/commit/143fd4c1f71fe7d5f6bd7b64c491d9644d861355
+function headache_remove_classic_theme_styles(): void
+{
+    wp_dequeue_style('classic-theme-styles');
+}
+
+add_action('wp_enqueue_scripts', 'headache_remove_classic_theme_styles');
 
 // Remove the SVG Filters that are mostly if not only used in Full Site Editing/Gutenberg
 // Detailed discussion at: https://github.com/WordPress/gutenberg/issues/36834

@@ -33,6 +33,7 @@ All features are activated by default when the plugin is activated.
 - Remove Gutenberg's front-end block styles
 - Remove Gutenberg's global styles
 - Remove Gutenberg's SVG filters
+- Remove classic theme styles
 - Remove ?ver= query from styles and scripts
 - Remove all extra RSS feed links
 - Remove emojis
