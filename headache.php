@@ -20,7 +20,7 @@
 // Redirects all feeds to home page.
 function headache_disable_feeds(): void
 {
-    wp_redirect(site_url());
+    wp_redirect(home_url());
 }
 
 // Disable feeds.
