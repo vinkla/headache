@@ -12,7 +12,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: Vincent Klaiber
  * Author URI: https://github.com/vinkla
- * Version: 2.3.0
+ * Version: 2.3.1
  * Plugin URI: https://github.com/vinkla/headache
  * GitHub Plugin URI: vinkla/headache
  */
@@ -164,9 +164,17 @@ function headache_remove_svg_filters(): void
 add_action('init', 'headache_remove_svg_filters');
 
 // Remove ?ver= query from styles and scripts.
-function headache_remove_script_version(string $src): string
+function headache_remove_script_version(string $url): string
 {
-    return $src ? esc_url(remove_query_arg('ver', $src)) : $src;
+    if (is_admin()) {
+        return $url;
+    }
+
+    if ($url) {
+        return esc_url(remove_query_arg('ver', $url));
+    }
+
+    return $url;
 }
 
 add_filter('script_loader_src', 'headache_remove_script_version', 15, 1);
