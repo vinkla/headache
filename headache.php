@@ -12,10 +12,12 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: Vincent Klaiber
  * Author URI: https://github.com/vinkla
- * Version: 3.0.1
+ * Version: 3.0.2
  * Plugin URI: https://github.com/vinkla/headache
  * GitHub Plugin URI: vinkla/headache
  */
+
+namespace Headache;
 
 // Redirects all feeds to home page.
 function headache_disable_feeds(): void
@@ -24,15 +26,15 @@ function headache_disable_feeds(): void
 }
 
 // Disable feeds.
-add_action('do_feed', 'headache_disable_feeds', 1);
-add_action('do_feed_rdf', 'headache_disable_feeds', 1);
-add_action('do_feed_rss', 'headache_disable_feeds', 1);
-add_action('do_feed_rss2', 'headache_disable_feeds', 1);
-add_action('do_feed_atom', 'headache_disable_feeds', 1);
+add_action('do_feed', __NAMESPACE__ . '\headache_disable_feeds', 1);
+add_action('do_feed_rdf', __NAMESPACE__ . '\headache_disable_feeds', 1);
+add_action('do_feed_rss', __NAMESPACE__ . '\headache_disable_feeds', 1);
+add_action('do_feed_rss2', __NAMESPACE__ . '\headache_disable_feeds', 1);
+add_action('do_feed_atom', __NAMESPACE__ . '\headache_disable_feeds', 1);
 
 // Disable comments feeds.
-add_action('do_feed_rss2_comments', 'headache_disable_feeds', 1);
-add_action('do_feed_atom_comments', 'headache_disable_feeds', 1);
+add_action('do_feed_rss2_comments', __NAMESPACE__ . '\headache_disable_feeds', 1);
+add_action('do_feed_atom_comments', __NAMESPACE__ . '\headache_disable_feeds', 1);
 
 // Disable comments.
 add_filter('comments_open', '__return_false');
@@ -110,7 +112,7 @@ function headache_disable_rest_endpoints(array $endpoints): array
     return $endpoints;
 }
 
-add_filter('rest_endpoints', 'headache_disable_rest_endpoints');
+add_filter('rest_endpoints', __NAMESPACE__ . '\headache_disable_rest_endpoints');
 
 // Remove JPEG compression.
 function headache_remove_jpeg_compression(): int
@@ -118,7 +120,7 @@ function headache_remove_jpeg_compression(): int
     return 100;
 }
 
-add_filter('jpeg_quality', 'headache_remove_jpeg_compression', 10, 2);
+add_filter('jpeg_quality', __NAMESPACE__ . '\headache_remove_jpeg_compression', 10, 2);
 
 // Update login page image link URL.
 function headache_login_url(): string
@@ -126,7 +128,7 @@ function headache_login_url(): string
     return home_url();
 }
 
-add_filter('login_headerurl', 'headache_login_url');
+add_filter('login_headerurl', __NAMESPACE__ . '\headache_login_url');
 
 // Update login page link title.
 function headache_login_title(): string
@@ -134,7 +136,7 @@ function headache_login_title(): string
     return get_bloginfo('name');
 }
 
-add_filter('login_headertext', 'headache_login_title');
+add_filter('login_headertext', __NAMESPACE__ . '\headache_login_title');
 
 // Remove Gutenberg's front-end block styles.
 function headache_remove_block_styles(): void
@@ -142,7 +144,7 @@ function headache_remove_block_styles(): void
     wp_deregister_style('wp-block-library');
 }
 
-add_action('wp_enqueue_scripts', 'headache_remove_block_styles');
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\headache_remove_block_styles');
 
 // Remove Gutenberg's global styles.
 // https://github.com/WordPress/gutenberg/pull/34334#issuecomment-911531705
@@ -151,7 +153,7 @@ function headache_remove_global_styles(): void
     wp_dequeue_style('global-styles');
 }
 
-add_action('wp_enqueue_scripts', 'headache_remove_global_styles');
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\headache_remove_global_styles');
 
 // Remove classic theme styles.
 // https://github.com/WordPress/WordPress/commit/143fd4c1f71fe7d5f6bd7b64c491d9644d861355
@@ -160,7 +162,7 @@ function headache_remove_classic_theme_styles(): void
     wp_dequeue_style('classic-theme-styles');
 }
 
-add_action('wp_enqueue_scripts', 'headache_remove_classic_theme_styles');
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\headache_remove_classic_theme_styles');
 
 // Remove the SVG Filters that are mostly if not only used in Full Site Editing/Gutenberg
 // Detailed discussion at: https://github.com/WordPress/gutenberg/issues/36834
@@ -170,7 +172,7 @@ function headache_remove_svg_filters(): void
     remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
 }
 
-add_action('init', 'headache_remove_svg_filters');
+add_action('init', __NAMESPACE__ . '\headache_remove_svg_filters');
 
 // Remove ?ver= query from styles and scripts.
 function headache_remove_script_version(string $url): string
@@ -186,8 +188,8 @@ function headache_remove_script_version(string $url): string
     return $url;
 }
 
-add_filter('script_loader_src', 'headache_remove_script_version', 15, 1);
-add_filter('style_loader_src', 'headache_remove_script_version', 15, 1);
+add_filter('script_loader_src', __NAMESPACE__ . '\headache_remove_script_version', 15, 1);
+add_filter('style_loader_src', __NAMESPACE__ . '\headache_remove_script_version', 15, 1);
 
 // Remove contributor, subscriber and author roles.
 function headache_remove_roles(): void
@@ -197,7 +199,7 @@ function headache_remove_roles(): void
     remove_role('subscriber');
 }
 
-add_action('init', 'headache_remove_roles');
+add_action('init', __NAMESPACE__ . '\headache_remove_roles');
 
 // Disable attachment template loading and redirect to 404.
 function headache_attachment_redirect_not_found(): void
@@ -209,7 +211,7 @@ function headache_attachment_redirect_not_found(): void
     }
 }
 
-add_filter('template_redirect', 'headache_attachment_redirect_not_found');
+add_filter('template_redirect', __NAMESPACE__ . '\headache_attachment_redirect_not_found');
 
 // Disable attachment canonical redirect links.
 function headache_disable_attachment_canonical_redirect_url(string $url): string
@@ -219,7 +221,7 @@ function headache_disable_attachment_canonical_redirect_url(string $url): string
     return $url;
 }
 
-add_filter('redirect_canonical', 'headache_disable_attachment_canonical_redirect_url', 0, 2);
+add_filter('redirect_canonical', __NAMESPACE__ . '\headache_disable_attachment_canonical_redirect_url', 0, 2);
 
 // Disable attachment links.
 function headache_disable_attachment_link(string $url, int $id): string
@@ -231,7 +233,7 @@ function headache_disable_attachment_link(string $url, int $id): string
     return $url;
 }
 
-add_filter('attachment_link', 'headache_disable_attachment_link', 10, 2);
+add_filter('attachment_link', __NAMESPACE__ . '\headache_disable_attachment_link', 10, 2);
 
 // Discourage search engines from indexing in non-production environments.
 function headache_disable_indexing()
@@ -239,4 +241,4 @@ function headache_disable_indexing()
     return wp_get_environment_type() === 'production' ? true : 0;
 }
 
-add_action('pre_option_blog_public', 'headache_disable_indexing');
+add_action('pre_option_blog_public', __NAMESPACE__ . '\headache_disable_indexing');
