@@ -2,7 +2,7 @@
     "name": "vinkla/headache",
     "description": "An easy-to-swallow painkiller plugin for WordPress",
     "license": "MIT",
-    "type": "wordpress-plugin",
+    "type": "wordpress-muplugin",
     "keywords": [
         "wordplate",
         "head",
