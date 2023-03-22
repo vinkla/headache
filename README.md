@@ -16,7 +16,7 @@ Require the package, with Composer, in the root directory of your project.
 composer require vinkla/headache
 ```
 
-Then login to the WordPress administrator dashboard and active the plugin.
+The plugin will be installed as a [must-use plugin](https://github.com/vinkla/wordplate#must-use-plugins).
 
 ## Features
 
