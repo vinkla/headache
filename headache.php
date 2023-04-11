@@ -20,21 +20,21 @@
 namespace Headache;
 
 // Redirects all feeds to home page.
-function headache_disable_feeds(): void
+function disable_feeds(): void
 {
     wp_redirect(home_url());
 }
 
 // Disable feeds.
-add_action('do_feed', __NAMESPACE__ . '\headache_disable_feeds', 1);
-add_action('do_feed_rdf', __NAMESPACE__ . '\headache_disable_feeds', 1);
-add_action('do_feed_rss', __NAMESPACE__ . '\headache_disable_feeds', 1);
-add_action('do_feed_rss2', __NAMESPACE__ . '\headache_disable_feeds', 1);
-add_action('do_feed_atom', __NAMESPACE__ . '\headache_disable_feeds', 1);
+add_action('do_feed', __NAMESPACE__ . '\\disable_feeds', 1);
+add_action('do_feed_rdf', __NAMESPACE__ . '\\disable_feeds', 1);
+add_action('do_feed_rss', __NAMESPACE__ . '\\disable_feeds', 1);
+add_action('do_feed_rss2', __NAMESPACE__ . '\\disable_feeds', 1);
+add_action('do_feed_atom', __NAMESPACE__ . '\\disable_feeds', 1);
 
 // Disable comments feeds.
-add_action('do_feed_rss2_comments', __NAMESPACE__ . '\headache_disable_feeds', 1);
-add_action('do_feed_atom_comments', __NAMESPACE__ . '\headache_disable_feeds', 1);
+add_action('do_feed_rss2_comments', __NAMESPACE__ . '\\disable_feeds', 1);
+add_action('do_feed_atom_comments', __NAMESPACE__ . '\\disable_feeds', 1);
 
 // Disable comments.
 add_filter('comments_open', '__return_false');
@@ -97,7 +97,7 @@ remove_action('wp_head', 'wp_oembed_add_host_js');
 
 // Disable default users API endpoints for security.
 // https://www.wp-tweaks.com/hackers-can-find-your-wordpress-username/
-function headache_disable_rest_endpoints(array $endpoints): array
+function disable_rest_endpoints(array $endpoints): array
 {
     if (!is_user_logged_in()) {
         if (isset($endpoints['/wp/v2/users'])) {
@@ -112,70 +112,70 @@ function headache_disable_rest_endpoints(array $endpoints): array
     return $endpoints;
 }
 
-add_filter('rest_endpoints', __NAMESPACE__ . '\headache_disable_rest_endpoints');
+add_filter('rest_endpoints', __NAMESPACE__ . '\\disable_rest_endpoints');
 
 // Remove JPEG compression.
-function headache_remove_jpeg_compression(): int
+function remove_jpeg_compression(): int
 {
     return 100;
 }
 
-add_filter('jpeg_quality', __NAMESPACE__ . '\headache_remove_jpeg_compression', 10, 2);
+add_filter('jpeg_quality', __NAMESPACE__ . '\\remove_jpeg_compression', 10, 2);
 
 // Update login page image link URL.
-function headache_login_url(): string
+function login_url(): string
 {
     return home_url();
 }
 
-add_filter('login_headerurl', __NAMESPACE__ . '\headache_login_url');
+add_filter('login_headerurl', __NAMESPACE__ . '\\login_url');
 
 // Update login page link title.
-function headache_login_title(): string
+function login_title(): string
 {
     return get_bloginfo('name');
 }
 
-add_filter('login_headertext', __NAMESPACE__ . '\headache_login_title');
+add_filter('login_headertext', __NAMESPACE__ . '\\login_title');
 
 // Remove Gutenberg's front-end block styles.
-function headache_remove_block_styles(): void
+function remove_block_styles(): void
 {
     wp_deregister_style('wp-block-library');
 }
 
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\headache_remove_block_styles');
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\remove_block_styles');
 
 // Remove Gutenberg's global styles.
 // https://github.com/WordPress/gutenberg/pull/34334#issuecomment-911531705
-function headache_remove_global_styles(): void
+function remove_global_styles(): void
 {
     wp_dequeue_style('global-styles');
 }
 
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\headache_remove_global_styles');
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\remove_global_styles');
 
 // Remove classic theme styles.
 // https://github.com/WordPress/WordPress/commit/143fd4c1f71fe7d5f6bd7b64c491d9644d861355
-function headache_remove_classic_theme_styles(): void
+function remove_classic_theme_styles(): void
 {
     wp_dequeue_style('classic-theme-styles');
 }
 
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\headache_remove_classic_theme_styles');
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\remove_classic_theme_styles');
 
 // Remove the SVG Filters that are mostly if not only used in Full Site Editing/Gutenberg
 // Detailed discussion at: https://github.com/WordPress/gutenberg/issues/36834
-function headache_remove_svg_filters(): void
+function remove_svg_filters(): void
 {
     remove_action('wp_body_open', 'gutenberg_global_styles_render_svg_filters');
     remove_action('wp_body_open', 'wp_global_styles_render_svg_filters');
 }
 
-add_action('init', __NAMESPACE__ . '\headache_remove_svg_filters');
+add_action('init', __NAMESPACE__ . '\\remove_svg_filters');
 
 // Remove ?ver= query from styles and scripts.
-function headache_remove_script_version(string $url): string
+function remove_script_version(string $url): string
 {
     if (is_admin()) {
         return $url;
@@ -188,21 +188,21 @@ function headache_remove_script_version(string $url): string
     return $url;
 }
 
-add_filter('script_loader_src', __NAMESPACE__ . '\headache_remove_script_version', 15, 1);
-add_filter('style_loader_src', __NAMESPACE__ . '\headache_remove_script_version', 15, 1);
+add_filter('script_loader_src', __NAMESPACE__ . '\\remove_script_version', 15, 1);
+add_filter('style_loader_src', __NAMESPACE__ . '\\remove_script_version', 15, 1);
 
 // Remove contributor, subscriber and author roles.
-function headache_remove_roles(): void
+function remove_roles(): void
 {
     remove_role('author');
     remove_role('contributor');
     remove_role('subscriber');
 }
 
-add_action('init', __NAMESPACE__ . '\headache_remove_roles');
+add_action('init', __NAMESPACE__ . '\\remove_roles');
 
 // Disable attachment template loading and redirect to 404.
-function headache_attachment_redirect_not_found(): void
+function attachment_redirect_not_found(): void
 {
     if (is_attachment()) {
         global $wp_query;
@@ -211,20 +211,20 @@ function headache_attachment_redirect_not_found(): void
     }
 }
 
-add_filter('template_redirect', __NAMESPACE__ . '\headache_attachment_redirect_not_found');
+add_filter('template_redirect', __NAMESPACE__ . '\\attachment_redirect_not_found');
 
 // Disable attachment canonical redirect links.
-function headache_disable_attachment_canonical_redirect_url(string $url): string
+function disable_attachment_canonical_redirect_url(string $url): string
 {
-    headache_attachment_redirect_not_found();
+    attachment_redirect_not_found();
 
     return $url;
 }
 
-add_filter('redirect_canonical', __NAMESPACE__ . '\headache_disable_attachment_canonical_redirect_url', 0, 2);
+add_filter('redirect_canonical', __NAMESPACE__ . '\\disable_attachment_canonical_redirect_url', 0, 2);
 
 // Disable attachment links.
-function headache_disable_attachment_link(string $url, int $id): string
+function disable_attachment_link(string $url, int $id): string
 {
     if ($attachment_url = wp_get_attachment_url($id)) {
         return $attachment_url;
@@ -233,12 +233,12 @@ function headache_disable_attachment_link(string $url, int $id): string
     return $url;
 }
 
-add_filter('attachment_link', __NAMESPACE__ . '\headache_disable_attachment_link', 10, 2);
+add_filter('attachment_link', __NAMESPACE__ . '\\disable_attachment_link', 10, 2);
 
 // Discourage search engines from indexing in non-production environments.
-function headache_disable_indexing()
+function disable_indexing()
 {
     return wp_get_environment_type() === 'production' ? true : 0;
 }
 
-add_action('pre_option_blog_public', __NAMESPACE__ . '\headache_disable_indexing');
+add_action('pre_option_blog_public', __NAMESPACE__ . '\\disable_indexing');
