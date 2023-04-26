@@ -23,6 +23,7 @@ namespace Headache;
 function disable_feeds(): void
 {
     wp_redirect(home_url());
+    exit;
 }
 
 // Disable feeds.
