@@ -12,7 +12,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: Vincent Klaiber
  * Author URI: https://github.com/vinkla
- * Version: 3.2.0
+ * Version: 3.2.1
  * Plugin URI: https://github.com/vinkla/headache
  * GitHub Plugin URI: vinkla/headache
  */
@@ -146,6 +146,7 @@ add_filter('login_headertext', __NAMESPACE__ . '\\login_title');
 function remove_block_styles(): void
 {
     wp_deregister_style('wp-block-library');
+    wp_deregister_style('wp-block-library-theme');
 }
 
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\remove_block_styles');
