@@ -27,7 +27,7 @@ All features are activated by default when the plugin is activated.
 - Disable comments
 - Disable comments feeds
 - Disable feeds
-- Disable attachment media pages
+- Disable attachment pages
 - Discourage search engines from indexing in non-production environments
 - Remove contributor, subscriber and author roles
 - Remove Gutenberg's front-end block styles

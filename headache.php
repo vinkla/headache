@@ -12,7 +12,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: Vincent Klaiber
  * Author URI: https://github.com/vinkla
- * Version: 3.1.0
+ * Version: 3.2.0
  * Plugin URI: https://github.com/vinkla/headache
  * GitHub Plugin URI: vinkla/headache
  */
@@ -46,6 +46,9 @@ add_filter('login_display_language_dropdown', '__return_false');
 // Disable XML RPC for security.
 add_filter('xmlrpc_enabled', '__return_false');
 add_filter('xmlrpc_methods', '__return_false');
+
+// Disable attachment pages.
+add_filter('pre_option_wp_attachment_pages_enabled', '__return_zero');
 
 // Remove WordPress version.
 remove_action('wp_head', 'wp_generator');
@@ -201,40 +204,6 @@ function remove_roles(): void
 }
 
 add_action('init', __NAMESPACE__ . '\\remove_roles');
-
-// Disable attachment template loading and redirect to 404.
-function attachment_redirect_not_found(): void
-{
-    if (is_attachment()) {
-        global $wp_query;
-        $wp_query->set_404();
-        status_header(404);
-    }
-}
-
-add_filter('template_redirect', __NAMESPACE__ . '\\attachment_redirect_not_found');
-
-// Disable attachment canonical redirect links.
-function disable_attachment_canonical_redirect_url(string $url): string
-{
-    attachment_redirect_not_found();
-
-    return $url;
-}
-
-add_filter('redirect_canonical', __NAMESPACE__ . '\\disable_attachment_canonical_redirect_url', 0, 2);
-
-// Disable attachment links.
-function disable_attachment_link(string $url, int $id): string
-{
-    if ($attachment_url = wp_get_attachment_url($id)) {
-        return $attachment_url;
-    }
-
-    return $url;
-}
-
-add_filter('attachment_link', __NAMESPACE__ . '\\disable_attachment_link', 10, 2);
 
 // Discourage search engines from indexing in non-production environments.
 function disable_indexing()
