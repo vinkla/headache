@@ -14,12 +14,16 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: Vincent Klaiber
  * Author URI: https://github.com/vinkla
- * Version: 3.2.2
+ * Version: 3.3.0
  * Plugin URI: https://github.com/vinkla/headache
  * GitHub Plugin URI: vinkla/headache
  */
 
+declare(strict_types=1);
+
 namespace Headache;
+
+use Ramsey\Uuid\Uuid;
 
 // Redirects all feeds to home page.
 function disable_feeds(): void
@@ -246,6 +250,22 @@ function disable_attachment_link(string $url, int $id): string
 }
 
 add_filter('attachment_link', __NAMESPACE__ . '\\disable_attachment_link', 10, 2);
+
+// Randomize attachment slugs using UUIDs to avoid slug reservation.
+function disable_attachment_slug_reservation(string $slug, string $id, string $status, string $type): string
+{
+    if ($type !== 'attachment') {
+        return $slug;
+    }
+
+    if (preg_match('/^[\da-f]{8}-[\da-f]{4}-[\da-f]{4}-[\da-f]{4}-[\da-f]{12}$/iD', $slug) > 0) {
+        return $slug;
+    }
+
+    return (string) Uuid::uuid4();
+}
+
+add_filter('wp_unique_post_slug', __NAMESPACE__ . '\\disable_attachment_slug_reservation', 10, 4);
 
 // Discourage search engines from indexing in non-production environments.
 function disable_indexing()

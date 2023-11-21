@@ -44,6 +44,7 @@ All features are activated by default when the plugin is activated.
 - Remove oEmbeds
 - Remove Really Simple Discovery link
 - Remove relational links for the posts
+- Remove reserved attachment slugs
 - Remove REST API link tag from `<head>` and HTML headers
 - Remove RSS feed links
 - Remove shortlink tag from `<head>` and HTML headers
