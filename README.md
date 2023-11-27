@@ -31,6 +31,7 @@ All features are activated by default when the plugin is activated.
 - Discourage search engines from indexing in non-production environments
 - Remove contributor, subscriber and author roles
 - Remove Gutenberg's front-end block styles
+- Remove Gutenberg's core block styles
 - Remove Gutenberg's global styles
 - Remove Gutenberg's SVG filters
 - Remove classic theme styles

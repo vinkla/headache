@@ -14,7 +14,7 @@
  * Description: An easy-to-swallow painkiller plugin for WordPress.
  * Author: Vincent Klaiber
  * Author URI: https://github.com/vinkla
- * Version: 3.3.0
+ * Version: 3.3.1
  * Plugin URI: https://github.com/vinkla/headache
  * GitHub Plugin URI: vinkla/headache
  */
@@ -156,6 +156,15 @@ function remove_block_styles(): void
 }
 
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\remove_block_styles');
+
+// Remove core block styles.
+// https://github.com/WordPress/gutenberg/issues/56065
+function remove_core_block_styles(): void
+{
+    wp_dequeue_style('core-block-supports');
+}
+
+add_action('wp_footer', __NAMESPACE__ . '\\remove_core_block_styles');
 
 // Remove Gutenberg's global styles.
 // https://github.com/WordPress/gutenberg/pull/34334#issuecomment-911531705
