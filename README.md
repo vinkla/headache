@@ -53,3 +53,4 @@ All features are activated by default when the plugin is activated.
 - Remove WordPress version
 - Update login page image link URL
 - Update login page link title
+- Update the permalink structure to `/%postname%/`

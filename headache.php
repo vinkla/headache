@@ -148,6 +148,17 @@ function login_title(): string
 
 add_filter('login_headertext', __NAMESPACE__ . '\\login_title');
 
+// Update the permalink structure to /%postname%/.
+function permalink_structure()
+{
+    if (get_option('permalink_structure') !== '/%postname%/') {
+        update_option('permalink_structure', '/%postname%/');
+        flush_rewrite_rules();
+    }
+}
+
+add_action('after_setup_theme', __NAMESPACE__ . '\\permalink_structure');
+
 // Remove Gutenberg's front-end block styles.
 function remove_block_styles(): void
 {
