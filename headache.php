@@ -148,7 +148,7 @@ function login_title(): string
 
 add_filter('login_headertext', __NAMESPACE__ . '\\login_title');
 
-// Update the permalink structure to /%postname%/.
+// Update permalink structure to /%postname%/.
 function permalink_structure()
 {
     if (get_option('permalink_structure') !== '/%postname%/') {
