@@ -285,7 +285,8 @@ function disable_indexing()
 add_action('pre_option_blog_public', __NAMESPACE__ . '\\disable_indexing');
 
 // Strip all HTML tags except those we have whitelisted
-add_filter('tiny_mce_before_init', function ($in) {
+function remove_excessive_html_tags($in): array
+{
     $in['paste_preprocess'] = "function(plugin, args) {
         // Strip all HTML tags except those we have whitelisted
         var whitelist = 'h1,h2,h3,h4,h5,h6,p,ol,ul,a';
@@ -305,5 +306,6 @@ add_filter('tiny_mce_before_init', function ($in) {
     }";
 
     return $in;
-});
+}
 
+add_filter('tiny_mce_before_init', remove_excessive_html_tags);
