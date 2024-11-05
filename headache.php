@@ -283,3 +283,27 @@ function disable_indexing()
 }
 
 add_action('pre_option_blog_public', __NAMESPACE__ . '\\disable_indexing');
+
+// Strip all HTML tags except those we have whitelisted
+add_filter('tiny_mce_before_init', function ($in) {
+    $in['paste_preprocess'] = "function(plugin, args) {
+        // Strip all HTML tags except those we have whitelisted
+        var whitelist = 'h1,h2,h3,h4,h5,h6,p,ol,ul,a';
+        var stripped = jQuery('<div>' + args.content + '</div>');
+        var els = stripped.find('*').not(whitelist);
+
+        for (var i = els.length - 1; i >= 0; i--) {
+            var e = els[i];
+            jQuery(e).replaceWith(e.innerHTML);
+        }
+
+        // Strip all class and id attributes
+        stripped.find('*').removeAttr('id').removeAttr('class');
+
+        // Return the clean HTML
+        args.content = stripped.html();
+    }";
+
+    return $in;
+});
+
