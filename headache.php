@@ -289,7 +289,7 @@ function sanitize_tiny_mce_html_content(array $config): array
 {
     $config['paste_preprocess'] = "function(plugin, args) {
         // Allow specific HTML tags while sanitizing the content
-        const allowedTags = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'ol', 'ul', 'a']);
+        const allowedTags = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'ol', 'ul', 'li', 'a']);
         const sanitizedContent = document.createElement('div');
         sanitizedContent.innerHTML = args.content;
 
