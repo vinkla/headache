@@ -284,28 +284,33 @@ function disable_indexing()
 
 add_action('pre_option_blog_public', __NAMESPACE__ . '\\disable_indexing');
 
-// Strip all HTML tags except those we have whitelisted
-function remove_excessive_html_tags($in): array
+// Sanitize HTML content when pasting in TinyMCE editor.
+function sanitize_tiny_mce_html_content(array $config): array
 {
-    $in['paste_preprocess'] = "function(plugin, args) {
-        // Strip all HTML tags except those we have whitelisted
-        var whitelist = 'h1,h2,h3,h4,h5,h6,p,ol,ul,a';
-        var stripped = jQuery('<div>' + args.content + '</div>');
-        var els = stripped.find('*').not(whitelist);
+    $config['paste_preprocess'] = "function(plugin, args) {
+        // Allow specific HTML tags while sanitizing the content
+        const allowedTags = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'ol', 'ul', 'a']);
+        const sanitizedContent = document.createElement('div');
+        sanitizedContent.innerHTML = args.content;
 
-        for (var i = els.length - 1; i >= 0; i--) {
-            var e = els[i];
-            jQuery(e).replaceWith(e.innerHTML);
-        }
+        // Remove elements not in the allowed tags
+        sanitizedContent.querySelectorAll('*').forEach(element => {
+            if (!allowedTags.has(element.tagName.toLowerCase())) {
+                element.replaceWith(...element.childNodes); // Replace with child nodes
+            }
+        });
 
-        // Strip all class and id attributes
-        stripped.find('*').removeAttr('id').removeAttr('class');
+        // Strip class and id attributes
+        sanitizedContent.querySelectorAll('*').forEach(element => {
+            element.removeAttribute('id');
+            element.removeAttribute('class');
+        });
 
         // Return the clean HTML
-        args.content = stripped.html();
+        args.content = sanitizedContent.innerHTML;
     }";
 
-    return $in;
+    return $config;
 }
 
-add_filter('tiny_mce_before_init', remove_excessive_html_tags);
+add_filter('tiny_mce_before_init', __NAMESPACE__ . '\\sanitize_tiny_mce_html_content');
