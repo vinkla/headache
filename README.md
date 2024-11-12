@@ -51,5 +51,6 @@ All features are activated by default when the plugin is activated.
 - Remove shortlink tag from `<head>` and HTML headers
 - Remove wlwmanifest.xml
 - Remove WordPress version
+- Remove blocked HTML elements from TinyMCE when pasting text
 - Update login page image link URL
 - Update login page link title
