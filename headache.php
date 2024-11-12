@@ -283,3 +283,34 @@ function disable_indexing()
 }
 
 add_action('pre_option_blog_public', __NAMESPACE__ . '\\disable_indexing');
+
+// Sanitize HTML content when pasting in TinyMCE editor.
+function sanitize_tiny_mce_html_content(array $config): array
+{
+    $config['paste_preprocess'] = "function(plugin, args) {
+        // Allow specific HTML tags while sanitizing the content
+        const allowedTags = new Set(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'ol', 'ul', 'li', 'a']);
+        const sanitizedContent = document.createElement('div');
+        sanitizedContent.innerHTML = args.content;
+
+        // Remove elements not in the allowed tags
+        sanitizedContent.querySelectorAll('*').forEach(element => {
+            if (!allowedTags.has(element.tagName.toLowerCase())) {
+                element.replaceWith(...element.childNodes); // Replace with child nodes
+            }
+        });
+
+        // Strip class and id attributes
+        sanitizedContent.querySelectorAll('*').forEach(element => {
+            element.removeAttribute('id');
+            element.removeAttribute('class');
+        });
+
+        // Return the clean HTML
+        args.content = sanitizedContent.innerHTML;
+    }";
+
+    return $config;
+}
+
+add_filter('tiny_mce_before_init', __NAMESPACE__ . '\\sanitize_tiny_mce_html_content');
