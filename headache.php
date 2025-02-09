@@ -314,3 +314,14 @@ function sanitize_tiny_mce_html_content(array $config): array
 }
 
 add_filter('tiny_mce_before_init', __NAMESPACE__ . '\\sanitize_tiny_mce_html_content');
+
+// Disable the font library.
+// https://developer.wordpress.org/news/snippets/how-to-disable-the-font-library/
+function disable_font_library(array $settings): array
+{
+    $settings['fontLibraryEnabled'] = false;
+
+    return $settings;
+}
+
+add_filter('block_editor_settings_all', __NAMESPACE__ . '\\disable_font_library');
