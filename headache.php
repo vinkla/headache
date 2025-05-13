@@ -280,7 +280,7 @@ function disable_attachment_slug_reservation(string $slug, string $id, string $s
         random_int(0, 0x3fff) | 0x8000,
         random_int(0, 0xffff),
         random_int(0, 0xffff),
-        random_int(0, 0xffff)
+        random_int(0, 0xffff),
     );
 }
 
