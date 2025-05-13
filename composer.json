@@ -17,8 +17,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
-        "ramsey/uuid": "^4.7"
+        "php": "^8.2"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

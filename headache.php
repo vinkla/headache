@@ -271,7 +271,17 @@ function disable_attachment_slug_reservation(string $slug, string $id, string $s
         return $slug;
     }
 
-    return (string) Uuid::uuid4();
+    return sprintf(
+        '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+        random_int(0, 0xffff),
+        random_int(0, 0xffff),
+        random_int(0, 0xffff),
+        random_int(0, 0x0fff) | 0x4000,
+        random_int(0, 0x3fff) | 0x8000,
+        random_int(0, 0xffff),
+        random_int(0, 0xffff),
+        random_int(0, 0xffff)
+    );
 }
 
 add_filter('wp_unique_post_slug', __NAMESPACE__ . '\\disable_attachment_slug_reservation', 10, 4);
