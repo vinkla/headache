@@ -23,8 +23,6 @@ declare(strict_types=1);
 
 namespace Headache;
 
-use Ramsey\Uuid\Uuid;
-
 // Redirects all feeds to home page.
 function disable_feeds(): void
 {
