@@ -72,9 +72,6 @@ remove_action('wp_head', 'feed_links', 2);
 // Remove all extra RSS feed links.
 remove_action('wp_head', 'feed_links_extra', 3);
 
-// Remove wlwmanifest.xml.
-remove_action('wp_head', 'wlwmanifest_link');
-
 // Remove meta rel=dns-prefetch href=//s.w.org
 remove_action('wp_head', 'wp_resource_hints', 2);
 

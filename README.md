@@ -125,9 +125,6 @@ All features are activated by default when the plugin is activated.
 - **[Remove shortlink tag from `<head>` and HTML headers](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L60-L64)**  
   Removes shortlink meta tags and HTTP headers for cleaner output.
 
-- **[Remove wlwmanifest.xml](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L75-L76)**  
-  Removes Windows Live Writer manifest link, which is obsolete and unnecessary.
-
 - **[Remove WordPress version](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L54-L55)**  
   Removes WordPress version meta tag for security through obscurity.
 
