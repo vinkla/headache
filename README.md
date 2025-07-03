@@ -74,9 +74,6 @@ All features are activated by default when the plugin is activated.
 
 ### Performance & Cleanup
 
-- **[Remove ?ver= query from styles and scripts](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L195-L210)**  
-  Removes version query parameters from asset URLs for cleaner URLs and better caching.
-
 - **[Remove JPEG compression](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L125-L131)**  
   Sets JPEG quality to 100% to prevent WordPress from compressing uploaded images.
 

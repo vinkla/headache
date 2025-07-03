@@ -189,23 +189,6 @@ function remove_svg_filters(): void
 
 add_action('init', __NAMESPACE__ . '\\remove_svg_filters');
 
-// Remove ?ver= query from styles and scripts.
-function remove_script_version(string $url): string
-{
-    if (is_admin()) {
-        return $url;
-    }
-
-    if ($url) {
-        return esc_url(remove_query_arg('ver', $url));
-    }
-
-    return $url;
-}
-
-add_filter('script_loader_src', __NAMESPACE__ . '\\remove_script_version', 15, 1);
-add_filter('style_loader_src', __NAMESPACE__ . '\\remove_script_version', 15, 1);
-
 // Remove contributor, subscriber and author roles.
 function remove_roles(): void
 {
