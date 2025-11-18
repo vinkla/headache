@@ -51,6 +51,9 @@ All features are activated by default when the plugin is activated.
 
 ### Gutenberg & Editor Cleanup
 
+- **[Disable loading separate core block assets](https://github.com/vinkla/headache/blob/e48f1320b14feabb5cd2e66d77d196b1ecb0a13d/headache.php#L54-L56)**  
+  Disables the loading of separate core block assets to prevent unstyled content and ensure proper style removal.
+
 - **[Disable font library](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L326-L335)**  
   Disables WordPress 6.5+ font library feature in the block editor, reducing interface complexity for sites that don't need custom fonts.
 
