@@ -4,9 +4,9 @@
 
 The plugin removes a lot of default WordPress stuff you just can't wait to get rid of. It removes meta tags such as feeds, version numbers and emojis.
 
-[![Build Status](https://badgen.net/github/checks/vinkla/headache?label=build&icon=github)](https://github.com/vinkla/headache/actions)
-[![Monthly Downloads](https://badgen.net/packagist/dm/vinkla/headache)](https://packagist.org/packages/vinkla/headache/stats)
-[![Latest Version](https://badgen.net/packagist/v/vinkla/headache)](https://packagist.org/packages/vinkla/headache)
+[![Build Status](https://img.shields.io/github/actions/workflow/status/vinkla/headache/php-cs-fixer.yml?label=tests)](https://github.com/vinkla/headache/actions)
+[![Monthly Downloads](https://img.shields.io/packagist/dm/vinkla/headache)](https://packagist.org/packages/vinkla/headache/stats)
+[![Latest Version](https://img.shields.io/packagist/v/vinkla/headache)](https://packagist.org/packages/vinkla/headache)
 
 ## Installation
 
