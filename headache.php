@@ -189,6 +189,7 @@ function remove_auto_sizes_styles(): void
     wp_dequeue_style('wp-img-auto-sizes-contain');
 }
 
+add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\remove_auto_sizes_styles');
 
 // Remove the SVG Filters that are mostly if not only used in Full Site Editing/Gutenberg
 // Detailed discussion at: https://github.com/WordPress/gutenberg/issues/36834
