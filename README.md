@@ -138,3 +138,22 @@ All features are activated by default when the plugin is activated.
 
 - **[Update login page link title](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L141-L147)**  
   Updates the login page logo title attribute to show your site name instead of "WordPress".
+
+## Tips
+
+Here are some additional tips for customizing WordPress, which can be added to your theme's `functions.php` file:
+
+- **[Remove admin menu items](https://github.com/vinkla/wordplate/blob/b6562cd1c4d805f35a23f8c712a9525bbfd2b6ed/public/themes/wordplate/functions.php#L35-L42)**  
+  Removes unnecessary admin menu items such as Comments, Posts, and Dashboard from the sidebar.
+
+- **[Remove admin toolbar menu items](https://github.com/vinkla/wordplate/blob/b6562cd1c4d805f35a23f8c712a9525bbfd2b6ed/public/themes/wordplate/functions.php#L44-L61)**  
+  Cleans up the admin toolbar by removing items like WordPress logo, updates, comments, and customizer links.
+
+- **[Remove admin dashboard widgets](https://github.com/vinkla/wordplate/blob/b6562cd1c4d805f35a23f8c712a9525bbfd2b6ed/public/themes/wordplate/functions.php#L63-L70)**  
+  Removes default dashboard widgets such as Activity, Site Health, WordPress Events and News, and Quick Draft.
+
+- **[Add custom login logo](https://github.com/vinkla/wordplate/blob/b6562cd1c4d805f35a23f8c712a9525bbfd2b6ed/public/themes/wordplate/functions.php#L72-L87)**  
+  Replaces the default WordPress logo on the login page with your own custom logo.
+
+- **[Update permalink structure](https://github.com/vinkla/wordplate/blob/b6562cd1c4d805f35a23f8c712a9525bbfd2b6ed/public/themes/wordplate/functions.php#L107-L113)**  
+  Automatically sets the permalink structure to `/%postname%/` for cleaner URLs.
