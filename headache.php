@@ -277,7 +277,7 @@ function disable_attachment_slug_reservation(string $slug, string $id, string $s
 add_filter('wp_unique_post_slug', __NAMESPACE__ . '\\disable_attachment_slug_reservation', 10, 4);
 
 // Discourage search engines from indexing in non-production environments.
-function disable_indexing()
+function disable_indexing(): int
 {
     return wp_get_environment_type() === 'production' ? 1 : 0;
 }
