@@ -32,7 +32,7 @@ All features are activated by default when the plugin is activated.
 
 ### Comment & Feed Management
 
-- **[Disable comments](https://github.com/vinkla/headache/blob/eba96905dbf168c1d8fddf8bdebeb3ad7fded450/headache.php#L43-L45)**  
+- **[Disable comments](https://github.com/vinkla/headache/blob/eba96905dbf168c1d8fddf8bdebeb3ad7fded450/headache.php#L44-L46)**  
   Turns off the commenting system entirely, useful for sites that don't need user interaction or want to prevent spam.
 
 - **[Disable comments feeds](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L40-L42)**  
@@ -41,7 +41,7 @@ All features are activated by default when the plugin is activated.
 - **[Disable feeds](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L26-L38)**  
   Redirects all RSS/Atom feeds to the homepage, eliminating content syndication endpoints that may not be needed.
 
-- **[Disable pings](https://github.com/vinkla/headache/blob/eba96905dbf168c1d8fddf8bdebeb3ad7fded450/headache.php#L47-L49)**  
+- **[Disable pings](https://github.com/vinkla/headache/blob/eba96905dbf168c1d8fddf8bdebeb3ad7fded450/headache.php#L48-L50)**  
   Closes pingbacks and trackbacks in every environment, not just the non-production ones WordPress 7.1 covers by default.
 
 ### Content & Attachment Management
