@@ -49,7 +49,7 @@ add_filter('login_display_language_dropdown', '__return_false');
 
 // Disable XML RPC for security.
 add_filter('xmlrpc_enabled', '__return_false');
-add_filter('xmlrpc_methods', '__return_false');
+add_filter('xmlrpc_methods', '__return_empty_array');
 
 // Disable loading separate core block assets.
 add_filter('should_load_separate_core_block_assets', '__return_false');
