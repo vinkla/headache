@@ -32,7 +32,7 @@ All features are activated by default when the plugin is activated.
 
 ### Comment & Feed Management
 
-- **[Disable comments](https://github.com/vinkla/headache/blob/master/headache.php#L44-L46)**  
+- **[Disable comments](https://github.com/vinkla/headache/blob/eba96905dbf168c1d8fddf8bdebeb3ad7fded450/headache.php#L43-L45)**  
   Turns off the commenting system entirely, useful for sites that don't need user interaction or want to prevent spam.
 
 - **[Disable comments feeds](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L40-L42)**  
@@ -41,7 +41,7 @@ All features are activated by default when the plugin is activated.
 - **[Disable feeds](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L26-L38)**  
   Redirects all RSS/Atom feeds to the homepage, eliminating content syndication endpoints that may not be needed.
 
-- **[Disable pings](https://github.com/vinkla/headache/blob/master/headache.php#L48-L50)**  
+- **[Disable pings](https://github.com/vinkla/headache/blob/eba96905dbf168c1d8fddf8bdebeb3ad7fded450/headache.php#L47-L49)**  
   Closes pingbacks and trackbacks in every environment, not just the non-production ones WordPress 7.1 covers by default.
 
 ### Content & Attachment Management
@@ -60,7 +60,7 @@ All features are activated by default when the plugin is activated.
 - **[Disable font library](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L326-L335)**  
   Disables WordPress 6.5+ font library feature in the block editor, reducing interface complexity for sites that don't need custom fonts.
 
-- **[Disable auto-sizes for lazy-loaded images](https://github.com/vinkla/headache/blob/master/headache.php#L192-L194)**  
+- **[Disable auto-sizes for lazy-loaded images](https://github.com/vinkla/headache/blob/eba96905dbf168c1d8fddf8bdebeb3ad7fded450/headache.php#L192-L194)**  
   Turns off the WordPress 6.7 auto-sizes feature, removing both the `sizes="auto"` attributes and the inline contain styles it prints.
 
 - **[Remove Gutenberg's front-end block styles](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L149-L156)**  
