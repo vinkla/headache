@@ -228,7 +228,7 @@ function attachment_redirect_not_found(): void
     }
 }
 
-add_filter('template_redirect', __NAMESPACE__ . '\\attachment_redirect_not_found');
+add_action('template_redirect', __NAMESPACE__ . '\\attachment_redirect_not_found');
 
 // Disable attachment canonical redirect links.
 function disable_attachment_canonical_redirect_url(string $url): string
@@ -284,7 +284,7 @@ function disable_indexing(): int
     return wp_get_environment_type() === 'production' ? 1 : 0;
 }
 
-add_action('pre_option_blog_public', __NAMESPACE__ . '\\disable_indexing');
+add_filter('pre_option_blog_public', __NAMESPACE__ . '\\disable_indexing');
 
 // Sanitize HTML content when pasting in TinyMCE editor.
 function sanitize_tiny_mce_html_content(array $config): array
