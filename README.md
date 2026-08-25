@@ -104,14 +104,14 @@ All features are activated by default when the plugin is activated.
 - **[Remove emojis](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L90-L104)**  
   Removes emoji detection scripts and styles, reducing page load times and preventing emoji-related issues.
 
-- **[Remove generated icons](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L57-L58)**  
-  Removes automatically generated site icon links from the HTML head.
+- **[Remove generated icons](https://github.com/vinkla/headache/blob/a2990a772cadbea6ec364e36f132a98b664edb91/headache.php#L65-L67)**  
+  Removes automatically generated site icon links from the HTML head, on the front end and on the login screen.
 
 - **[Remove language dropdown on login screen](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L47-L48)**  
   Hides the language selector on the login page for cleaner login experience.
 
-- **[Remove meta rel=dns-prefetch href=//s.w.org](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L78-L79)**  
-  Removes DNS prefetch hint for WordPress.org servers, improving privacy and reducing external requests.
+- **[Remove meta rel=dns-prefetch href=//s.w.org](https://github.com/vinkla/headache/blob/a2990a772cadbea6ec364e36f132a98b664edb91/headache.php#L84-L86)**  
+  Removes DNS prefetch hint for WordPress.org servers on the front end and on the login screen, improving privacy and reducing external requests.
 
 - **[Remove oEmbeds](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L102-L104)**  
   Removes oEmbed discovery links and scripts, preventing automatic embedding of external content.
