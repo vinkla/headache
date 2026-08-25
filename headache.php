@@ -188,14 +188,9 @@ function remove_classic_theme_styles(): void
 
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\remove_classic_theme_styles');
 
-// Remove auto-sizes contain inline styles.
+// Disable auto-sizes for lazy-loaded images and its inline contain styles.
 // https://make.wordpress.org/core/2024/10/18/auto-sizes-for-lazy-loaded-images-in-wordpress-6-7/
-function remove_auto_sizes_styles(): void
-{
-    wp_dequeue_style('wp-img-auto-sizes-contain');
-}
-
-add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\remove_auto_sizes_styles');
+add_filter('wp_img_tag_add_auto_sizes', '__return_false');
 
 // Remove the SVG Filters that are mostly if not only used in Full Site Editing/Gutenberg
 // Detailed discussion at: https://github.com/WordPress/gutenberg/issues/36834

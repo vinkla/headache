@@ -60,6 +60,9 @@ All features are activated by default when the plugin is activated.
 - **[Disable font library](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L326-L335)**  
   Disables WordPress 6.5+ font library feature in the block editor, reducing interface complexity for sites that don't need custom fonts.
 
+- **[Disable auto-sizes for lazy-loaded images](https://github.com/vinkla/headache/blob/master/headache.php#L192-L194)**  
+  Turns off the WordPress 6.7 auto-sizes feature, removing both the `sizes="auto"` attributes and the inline contain styles it prints.
+
 - **[Remove Gutenberg's front-end block styles](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L149-L156)**  
   Removes default block styling to prevent style conflicts and reduce CSS bloat.
 
@@ -74,9 +77,6 @@ All features are activated by default when the plugin is activated.
 
 - **[Remove classic theme styles](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L176-L183)**  
   Removes backwards compatibility styles for classic themes when using block themes.
-
-- **[Remove auto-sizes contain inline styles](https://github.com/vinkla/headache/blob/26e3b067c398c0220ac5aebf2985d1a757137804/headache.php#L185-L192)**  
-  Removes the inline styles added by WordPress 6.7 for auto-sizes lazy-loaded images feature.
 
 - **[Remove blocked HTML elements from TinyMCE when pasting text](https://github.com/vinkla/headache/blob/96a91c7446efc70a1031d11a172e3dfb0164b6fa/headache.php#L295-L324)**  
   Sanitizes pasted content in the classic editor by removing unwanted HTML tags and attributes.
