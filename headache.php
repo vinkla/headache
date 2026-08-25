@@ -41,8 +41,13 @@ add_action('do_feed_atom', __NAMESPACE__ . '\\disable_feeds', 1);
 add_action('do_feed_rss2_comments', __NAMESPACE__ . '\\disable_feeds', 1);
 add_action('do_feed_atom_comments', __NAMESPACE__ . '\\disable_feeds', 1);
 
-// Disable comments.
+// Disable comments and pings.
 add_filter('comments_open', '__return_false');
+add_filter('pings_open', '__return_false');
+
+// Disable pingbacks and trackbacks in production too. WordPress 7.1 only disables
+// them in non-production environments.
+add_filter('wp_should_disable_pings_for_environment', '__return_true');
 
 // Remove language dropdown on login screen.
 add_filter('login_display_language_dropdown', '__return_false');
