@@ -81,10 +81,6 @@ remove_action('wp_head', 'feed_links', 2);
 // Remove all extra RSS feed links.
 remove_action('wp_head', 'feed_links_extra', 3);
 
-// Remove meta rel=dns-prefetch href=//s.w.org
-remove_action('wp_head', 'wp_resource_hints', 2);
-remove_action('login_head', 'wp_resource_hints', 8);
-
 // Remove relational links for the posts.
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10);
 
